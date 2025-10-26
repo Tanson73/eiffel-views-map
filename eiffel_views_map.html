@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Виды на Эйфелеву башню — пронумерованный список и карта</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <style>body{font-family:Arial,Helvetica,sans-serif;padding:12px}h1{font-size:20px}#map{height:520px;margin-top:12px;border:1px solid #ccc}ol.location-list{padding-left:18px}li.loc{margin:8px 0}code{background:#f4f4f4;padding:2px 6px;border-radius:4px}
+  .legend{font-size:13px;margin-top:8px}
+  </style>
+</head>
+<body>
+  <h1>Номера и карта: лучшие точки для вида на Эйфелеву башню</h1>
+  <p>Ниже — пронумерованный список точек с краткой подсказкой по метро/подходу. На карте — маркеры всех точек (нажмите маркер, чтобы увидеть подсказку).</p>
+
+  <ol class="location-list">
+    <li class="loc"><strong>1. Pont de Bir-Hakeim</strong> — метро <code>Bir-Hakeim (линия 6)</code>. Совет: в поезде линия 6 занимайте место справа. (48.85556, 2.28778)</li>
+    <li class="loc"><strong>2. Avenue de Camoëns</strong> — близко к <code>Trocadéro / Passy</code>, пешком от Trocadéro. (48.85949, 2.286852)</li>
+    <li class="loc"><strong>3. Avenue de New‑York / Pont d'Iéna</strong> — метро <code>Iéna (линия 9)</code>, прогулка по набережной; также рестораны с видом. (48.860821, 2.291939)</li>
+    <li class="loc"><strong>4. Place de Mexico</strong> — рядом с Trocadéro, метро <code>Trocadéro (6/9)</code>. (48.86563, 2.28277)</li>
+    <li class="loc"><strong>5. Passerelle Debilly</strong> — пешком от <code>Iéna / Trocadéro</code>, пешеходный мост через Сену. (48.862656, 2.296856)</li>
+    <li class="loc"><strong>6. 29 Avenue Rapp</strong> — знаменитый фасад Lavirotte; метро <code>Alma–Marceau (линия 9)</code> / <code>Pont de l'Alma (RER C)</code>. (48.859105, 2.300857)</li>
+    <li class="loc"><strong>7. Rue de Buenos‑Ayres</strong> — улица в VII округе с ракурсами на башню; пешком от <code>Bir‑Hakeim / Champ de Mars</code>. (48.85333, 2.29222)</li>
+    <li class="loc"><strong>8. Перекрёсток Rue Saint‑Dominique &amp; Boulevard de la Tour‑Maubourg</strong> — метро <code>La Tour‑Maubourg (8)</code> / <code>Invalides</code>. (48.860183, 2.321248)</li>
+    <li class="loc"><strong>9. Printemps (Boulevard Haussmann)</strong> — для городских видов и шопинга; метро <code>Havre‑Caumartin / Chaussée d'Antin (3/9)</code>. (48.873779, 2.328018)</li>
+    <li class="loc"><strong>10. Rue Saint‑Charles</strong> — спокойная улица в районе Champ de Mars; удобно сочетать с прогулкой по южному склону башни. (48.8568, 2.2986)</li>
+    <li class="loc"><strong>11. Rue de Monttessuy</strong> — короткая улица рядом с Champ de Mars; пешком от <code>École Militaire (8)</code> или <code>Bir‑Hakeim (6)</code>. (48.8574, 2.3003)</li>
+    <li class="loc"><strong>12. Угол Avenue de la Bourdonnais &amp; Avenue Gustave Eiffel</strong> — близко к Champ de Mars; наилучшие виды при прогулке вокруг парка. (48.856898, 2.301556)</li>
+    <li class="loc"><strong>13. Parc de Belleville</strong> — смотровая площадка с панорамой Парижа; метро <code>Belleville (2/11)</code>. (48.87139, 2.38556)</li>
+    <li class="loc"><strong>14. Vedettes de Paris (Port de la Bourdonnais)</strong> — причал для речных прогулок у подножия башни; добираться удобнее через <code>Bir‑Hakeim / École Militaire</code>. (48.85810, 2.29460)</li>
+    <li class="loc"><strong>15. Restaurant Les Ombres — Musée du Quai Branly</strong> — ресторан на крыше музея с видом на башню; метро <code>Alma‑Marceau / Iéna</code>. (48.86087, 2.29775)</li>
+  </ol>
+
+  <div id="map"></div>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+    const map = L.map('map').setView([48.8584, 2.2945], 14);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+      attribution: '© OpenStreetMap'
+    }).addTo(map);
+
+    const places = [
+      {id:1, name:'Pont de Bir‑Hakeim', coords:[48.85556,2.28778], info:'Метро: Bir‑Hakeim (линия 6).'},
+      {id:2, name:'Avenue de Camoëns', coords:[48.85949,2.286852], info:'Близко к Trocadéro / Passy.'},
+      {id:3, name:"Avenue de New‑York / Pont d'Iéna", coords:[48.860821,2.291939], info:'Метро: Iéna (9).'},
+      {id:4, name:'Place de Mexico', coords:[48.86563,2.28277], info:'Рядом с Trocadéro.'},
+      {id:5, name:'Passerelle Debilly', coords:[48.862656,2.296856], info:'Пешеходный мост.'},
+      {id:6, name:'29 Avenue Rapp', coords:[48.859105,2.300857], info:'Фасад Lavirotte.'},
+      {id:7, name:'Rue de Buenos‑Ayres', coords:[48.85333,2.29222], info:'Улица в VII округе.'},
+      {id:8, name:'Rue Saint‑Dominique & Tour‑Maubourg', coords:[48.860183,2.321248], info:'Метро La Tour‑Maubourg.'},
+      {id:9, name:'Printemps Haussmann', coords:[48.873779,2.328018], info:'Метро Havre‑Caumartin.'},
+      {id:10, name:'Rue Saint‑Charles', coords:[48.8568,2.2986], info:'Рядом с Champ de Mars.'},
+      {id:11, name:'Rue de Monttessuy', coords:[48.8574,2.3003], info:'Рядом с École Militaire.'},
+      {id:12, name:'Avenue de la Bourdonnais & Gustave Eiffel', coords:[48.856898,2.301556], info:'Угол улиц у башни.'},
+      {id:13, name:'Parc de Belleville', coords:[48.87139,2.38556], info:'Метро Belleville (2/11).'},
+      {id:14, name:'Vedettes de Paris', coords:[48.85810,2.29460], info:'Причал прогулок по Сене.'},
+      {id:15, name:'Les Ombres — Musée du Quai Branly', coords:[48.86087,2.29775], info:'Ресторан с видом.'}
+    ];
+
+    places.forEach(p => {
+      const m = L.marker(p.coords).addTo(map);
+      m.bindPopup(`<strong>${p.id}. ${p.name}</strong><br>${p.info}`);
+    });
+  </script>
+</body>
+</html>
